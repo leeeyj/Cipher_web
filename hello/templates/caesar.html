@@ -1,0 +1,83 @@
+<script>
+
+    function Caesar_keygen(selected_key){
+        var plain_key = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        var generated_key = []
+        for(var i = 0; i < 26; i++){
+            generated_key[i] = plain_key[(i + selected_key) % 26];
+        }
+        // alert(generated_key.join(""));
+        return generated_key.join("");
+    }
+
+    function printCipher() {
+            var name = document.getElementById('cipher').value.split("");
+            var target = document.getElementById("keyselect");
+            // alert(Number(target.options[target.selectedIndex].text));
+            var key = Caesar_keygen(Number(target.options[target.selectedIndex].text));
+            
+            var upAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            var lowerAlphabet = "abcdefghijklmnopqrstuvwxyz";
+            var cipher = [];                               
+
+            for (var i = 0; i < name.length; i++) {
+                if (upAlphabet.includes(name[i])){
+                    cipher[i] = key[upAlphabet.indexOf(name[i])].toUpperCase();}
+                else if(lowerAlphabet.includes(name[i])) {
+                    cipher[i] = key[lowerAlphabet.indexOf(name[i])].toLowerCase();
+                } else{
+                    cipher[i] = name[i];
+                }
+
+            }
+            document.getElementById("result").innerText = cipher.join("");
+    }
+
+</script>
+
+<style>
+    * {
+        font-size: 16px;
+        font-family: Consolas, sans-serif;
+        }
+    body {
+            background-color: rgb(248, 233, 214);
+            width: 480px;
+            margin: 0 auto;
+            }
+    h1 {
+        margin-top: 100px;
+        font-size: 50px;
+        font-family: 'Roboto Slab', serif;
+        text-align: center;
+    }
+</style>
+
+<!doctype html>
+<h1>
+    Caesar Cipher
+</h1>
+<html lang="ko">
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">    
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@1,300&family=Roboto+Slab:wght@600&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Caesar_cipher</title>
+</head>
+  <body>
+        <p><textarea id="cipher" cols="50" rows="10"></textarea></p>
+            <p>
+                <select id=keyselect name="keyselect">
+                    <optgroup label="key select">
+                        <script>
+                            for(var i = 0; i < 26; i++){
+                                document.write("<option>" + i + "</option>");
+                            }
+                        </script>
+                    </optgroup>
+                </select>>
+            </p>
+        <p><input type="button" value="Encrypt" onclick="printCipher()"></p>
+        <p><textarea id = "result" cols="50" rows="10"></textarea></p>
+  </body>
+</html>
