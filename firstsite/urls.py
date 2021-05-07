@@ -19,5 +19,8 @@ import hello.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', hello.views.home, name='home')
+    path('', hello.views.home, name='home'),
+    path('vigenere_input/', hello.views.vigenere_input, name='vigenere_input'),
+    path('vigenere/', hello.views.vigenere_encrypt, name='vigenere'),
+    path('caesar/', hello.views.caesar, name='caesar'),
 ]

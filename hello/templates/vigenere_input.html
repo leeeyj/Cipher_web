@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Vigenere Cipher</title>
+    </head>
+    <body>
+        <h1>Vigenere Cipher</h1>
+        <br><br>
+
+        <p>입력하신 문장을 암호화 해줍니다.</p>
+        <form action="{% url 'vigenere' %}" method="GET">
+            평문:
+            <br>
+            <textarea name="fulltext_pt" id="" cols="50" rows="10" placeholder="Please enter a plaintext."></textarea>
+            <br>
+            키:
+            <br>
+            <textarea name="fulltext_key" id="" cols="30" rows="10" placeholder="Please enter a key."></textarea>
+            <br>
+            <button type="submit">encrypt</button>
+        </form>
+    </body>
+</html>
