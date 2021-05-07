@@ -1,22 +1,45 @@
-<html>
-    <head>
-        <title>Vigenere Cipher</title>
-    </head>
-    <body>
-        <h1>Vigenere Cipher</h1>
-        <br><br>
+<style>
+    * {
+        font-size: 16px;
+        font-family: Consolas, sans-serif;
+        }
+    body {
+            background-color: rgb(248, 233, 214);
+            width: 480px;
+            margin: 0 auto;
+            }
+    h1 {
+        margin-top: 100px;
+        font-size: 50px;
+        font-family: 'Roboto Slab', serif;
+        text-align: center;
+    }
+</style>
 
-        <p>입력하신 문장을 암호화 해줍니다.</p>
-        <form action="{% url 'vigenere' %}" method="GET">
-            평문:
-            <br>
-            <textarea name="fulltext_pt" id="" cols="50" rows="10" placeholder="Please enter a plaintext."></textarea>
-            <br>
-            키:
-            <br>
-            <textarea name="fulltext_key" id="" cols="30" rows="10" placeholder="Please enter a key."></textarea>
-            <br>
-            <button type="submit">encrypt</button>
-        </form>
-    </body>
+<!doctype html>
+<h1>
+    Vigenere Cipher
+</h1>
+<html lang="ko">
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">    
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@1,300&family=Roboto+Slab:wght@600&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Vigenere Cipher</title>
+</head>
+  <body>
+    <br><br>
+    <p>입력하신 문장을 암호화 해줍니다.</p>
+    <form action="{% url 'vigenere' %}" method="GET">
+        평문:
+        <br>
+        <textarea name="fulltext_pt" id="" cols="50" rows="10" placeholder="Please enter a plaintext."></textarea>
+        <br>
+        키:
+        <br>
+        <textarea name="fulltext_key" id="" cols="30" rows="10" placeholder="Please enter a key."></textarea>
+        <br>
+        <button type="submit">encrypt</button>
+    </form>
+  </body>
 </html>
