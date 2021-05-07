@@ -1,5 +1,37 @@
-<form action="{% url 'subst' %}" method="GET">
-    <label for="msg">Text: </label><br>
-    <textarea name="msg" id="" cols="30" rows="10"></textarea><br>
-    <button type="submit">encypt</button>
-</form>
+<style>
+    * {
+        font-size: 16px;
+        font-family: Consolas, sans-serif;
+        }
+    body {
+            background-color: rgb(248, 233, 214);
+            width: 480px;
+            margin: 0 auto;
+            }
+    h1 {
+        margin-top: 100px;
+        font-size: 50px;
+        font-family: 'Roboto Slab', serif;
+        text-align: center;
+    }
+</style>
+
+<!doctype html>
+<h1>
+    Subst Cipher
+</h1>
+<html lang="ko">
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">    
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@1,300&family=Roboto+Slab:wght@600&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Subst Cipher</title>
+</head>
+  <body>
+    <form action="{% url 'subst' %}" method="GET">
+        <label for="msg">Text: </label><br>
+        <textarea name="msg" id="" cols="30" rows="10"></textarea><br>
+        <button type="submit">encypt</button>
+    </form>
+  </body>
+</html>
