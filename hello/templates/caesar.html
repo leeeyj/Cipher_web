@@ -18,7 +18,7 @@
             
             var upAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             var lowerAlphabet = "abcdefghijklmnopqrstuvwxyz";
-            var cipher = [];                               
+            var cipher = [];
 
             for (var i = 0; i < name.length; i++) {
                 if (upAlphabet.includes(name[i])){
@@ -30,54 +30,129 @@
                 }
 
             }
-            document.getElementById("result").innerText = cipher.join("");
+            document.getElementById("cipher").value = cipher.join("");
+    }
+
+    function printPlain() {
+        var name = document.getElementById('cipher').value.split("");
+        var target = document.getElementById("keyselect");
+        // alert(Number(target.options[target.selectedIndex].text));
+        var key = Caesar_keygen(Number(target.options[target.selectedIndex].text));
+
+        var upAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        var lowerAlphabet = "abcdefghijklmnopqrstuvwxyz";
+
+        var plain = [];
+        
+        for (var i = 0; i < name.length; i++) {
+                if (upAlphabet.includes(name[i])){
+                    plain[i] = upAlphabet[key.indexOf(name[i])];}
+                else if(lowerAlphabet.includes(name[i])) {
+                    plain[i] = lowerAlphabet[key.indexOf(name[i].toUpperCase())];
+                } else{
+                    plain[i] = name[i];
+                }
+
+            }
+        document.getElementById("cipher").value = plain.join("");
     }
 
 </script>
 
 <style>
+    div#div1 {border: 3px solid rgb(145, 136, 119);}
     * {
         font-size: 16px;
         font-family: Consolas, sans-serif;
         }
+    
     body {
-            background-color: rgb(248, 233, 214);
-            width: 480px;
-            margin: 0 auto;
-            }
-    h1 {
-        margin-top: 100px;
-        font-size: 50px;
-        font-family: 'Roboto Slab', serif;
+        background-color: rgb(255, 249, 227);
+        margin:0 auto;
+    }
+
+    div {
+        width: 50%;
+        margin:0 auto;
         text-align: center;
     }
+
+    h1 {
+        margin-top: 60px;
+        font-size: 50px;
+        font-family: 'Nanum Myeongjo', serif;
+        font-weight: 800;
+        text-align: center;
+    }
+
+    h2 {
+        margin-top: -10px;
+        font-family: 'Nanum Myeongjo', serif;
+        font-size: 30px;
+        font-weight: 400;
+        text-align: center;
+    }
+
+    .notes {
+        background-attachment: local;
+        background-image:
+        linear-gradient(to right, white 10px, transparent 10px),
+        linear-gradient(to left, white 10px, transparent 10px),
+        repeating-linear-gradient(white, white 30px, #ccc 30px, #ccc 31px, white 31px);
+        line-height: 31px;
+        padding: 8px 10px;
+        margin:0 auto;
+        width: 80%;
+		height: 70%;
+    }
+    
+    hr {
+        margin: 0 auto;
+        border: 3px solid rgb(145, 136, 119);
+    }
+
 </style>
 
 <!doctype html>
 <h1>
+    <hr width="50%">
+    <p></p>
     Caesar Cipher
 </h1>
+<h2>
+    Protect your text
+    <p></p>
+    <hr width="50%">
+</h2>
 <html lang="ko">
-  <head>
-    <link rel="preconnect" href="https://fonts.gstatic.com">    
-    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@1,300&family=Roboto+Slab:wght@600&display=swap" rel="stylesheet">
+
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
     <meta charset="utf-8">
-    <title>Caesar_cipher</title>
+    <title>Caesar</title>
 </head>
-  <body>
-        <p><textarea id="cipher" cols="50" rows="10"></textarea></p>
-            <p>
-                <select id=keyselect name="keyselect">
-                    <optgroup label="key select">
-                        <script>
-                            for(var i = 0; i < 26; i++){
-                                document.write("<option>" + i + "</option>");
-                            }
-                        </script>
-                    </optgroup>
-                </select>>
-            </p>
-        <p><input type="button" value="Encrypt" onclick="printCipher()"></p>
-        <p><textarea id = "result" cols="50" rows="10"></textarea></p>
-  </body>
+
+<body>
+    <div id="div1">
+        <p><textarea class="notes" id="cipher"></textarea></p>
+        <p>
+            <select id=keyselect name="keyselect">
+                <optgroup label="key select">
+                    <script>
+                        for(var i = 0; i < 26; i++){
+                            document.write("<option>" + i + "</option>");
+                        }
+                    </script>
+                </optgroup>
+            </select>>
+        </p>
+        <p><input type="button" value="Encrypt" onclick="printCipher()">
+            <input type="button" value="Decrypt" onclick="printPlain()">>
+        </p>
+        <!--<p><textarea id = "result" width= "1000%" rows="10"></textarea></p>-->
+    </div>
+    <p></p>
+</body>
+
 </html>
