@@ -1,3 +1,5 @@
+
+
 <script>
     function hideDiv (){
     document.getElementById("div1").className = "animated fadeOutRight";
@@ -41,28 +43,55 @@
     }
 
 </style>
-
+<html lang="ko">
 <!doctype html>
-<h1>
-
-</h1>
 <div id = div1 class="animated fadeInLeft">
     Simple Cipher
 </div>
-
-<html lang="ko">
-  <head>
+<head>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
     <meta charset="utf-8">
     <title>Simple_Cipher</title>
+    <style>
+        #topMenu {
+            height: 30px;
+            width: 850px;
+            text-align: center;
+        }
+        #topMenu ul li {
+            list-style: none;
+            color: white;
+            background-color: #2d2d2d;
+            float: left;
+            line-height: 30px;
+            vertical-align: middle;
+            text-align: center;
+            display: inline;
+        }
+        #topMenu .menuLink {
+            text-decoration: none;
+            color: white;
+            display: black;
+            width: 150px;
+            font-size: 12px;
+            font-weight: bold;
+            font-family: "Trebuchet MS", Dotum, Arial;
+        }
+        #topMenu .menuLink:hover {
+            color: red;
+            background-color: #4d4d4d;
+        }
+    </style>
 </head>
 <body id="body1">
-    <a id="a1" href="{% url 'vigenere_input' %}">vigenere cipher</a>
-    <br>
-    <a id="a2" href="{% url 'caesar' %}">caesar cipher</a>
-    <br>
-    <a id="a3" href="{% url 'subst_input' %}">subst cipher</a>
+    <nav id="topMenu" >
+        <ul>
+            <li><a class="menuLink" id="a1" href="{% url 'vigenere_input' %}">Vigenere Cipher</a></li>
+            <li><a class="menuLink" id="a2" href="{% url 'caesar' %}">Caesar Cipher</a></li>
+            <li><a class="menuLink" id="a3" href="{% url 'subst_input' %}">Subst Cipher</a></li>
+        </ul>
+    </nav>
 </body>
 </html>
