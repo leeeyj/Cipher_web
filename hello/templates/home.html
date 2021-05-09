@@ -1,6 +1,4 @@
-
-
-<script>
+<!--<script>
     function hideDiv (){
     document.getElementById("div1").className = "animated fadeOutRight";
     self.setTimeout("delay()",1000);
@@ -11,6 +9,7 @@
         document.getElementById("a3").style.display="block"
     }
     self.setTimeout("hideDiv()",2000);
+
 </script>
 
 
@@ -25,7 +24,7 @@
             margin: 0 auto;
     }
 
-    div{
+    #div1{
         /*margin-top: 100px;*/
         position:absolute;
         top:50%;
@@ -38,9 +37,11 @@
         font-weight: 800;
         /*text-align: center;*/
     }
+    
     a{
         display: none;
     }
+
 
 </style>
 <html lang="ko">
@@ -94,4 +95,629 @@
         </ul>
     </nav>
 </body>
-</html>
+</html>-->
+
+<script>
+    function hideDiv (){
+    document.getElementById("div1").className = "animated fadeOutRight";
+    self.setTimeout("delay()",1000);
+    }
+    function delay(){
+        document.getElementById("h").style.display="block";
+        document.getElementById("div2").style.display="block";
+    }
+    self.setTimeout("hideDiv()", 2000);
+</script>
+
+<style>
+    body,
+    html {
+        background-color: #fff;
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        font-family: "Montserrat", sans-serif;
+    }
+
+    main {
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .aside-section {
+        top: 0;
+        bottom: 0;
+        position: absolute;
+    }
+
+    .aside-left {
+        display: none;
+        width: 40%;
+        left: 0;
+        background-color: #ff5964;
+        -webkit-transform: translateY(-100%);
+        -moz-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+        -o-transform: translateY(-100%);
+        transform: translateY(-100%);
+        transition: transform 0.4s ease-in-out;
+    }
+
+    .aside-right {
+        width: 100%;
+        right: 0;
+        background-color: #38618c;
+        -webkit-transform: translateX(100%);
+        -moz-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+        -o-transform: translateX(100%);
+        transform: translateX(100%);
+        transition: transform 0.4s ease-in-out;
+    }
+
+    .aside-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        margin-top: 150px;
+        text-align: left;
+        padding-left: 50px;
+    }
+
+    .aside-content {
+        margin-top: 150px;
+        padding: 0 40px;
+        position: relative;
+        color: white;
+        text-align: center;
+    }
+
+    .aside-list li {
+        margin-bottom: 20px;
+    }
+
+    .aside-anchor::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        background-color: #ff5964;
+        left: 0;
+        right: 0;
+        height: 3px;
+        border-radius: 3px;
+    }
+
+    .aside-anchor::before {
+        border-radius: 3px;
+        content: "";
+        position: absolute;
+        bottom: 0;
+        background-color: #fff;
+        left: 0;
+        height: 3px;
+        z-index: 1;
+        width: 50%;
+        -webkit-transition: transform 0.2s ease-in-out;
+        -o-transition: transform 0.2s ease-in-out;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .aside-anchor:hover:before {
+        -webkit-transform: translateX(100%);
+        -moz-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+        -o-transform: translateX(100%);
+        transform: translateX(100%);
+    }
+
+    .aside-anchor {
+        padding-bottom: 7px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 30px;
+        position: relative;
+        font-weight: 500;
+    }
+
+    input[type="checkbox"] {
+        display: none;
+    }
+
+    input[type="checkbox"]:checked ~ aside .aside-left {
+        transform: translateY(0%);
+    }
+
+    input[type="checkbox"]:checked ~ aside .aside-right {
+        transform: translateX(0%);
+    }
+
+    input[type="checkbox"]:checked ~ label .bar {
+        background-color: #fff;
+    }
+
+    input[type="checkbox"]:checked ~ label .top {
+        -webkit-transform: translateY(0px) rotateZ(45deg);
+        -moz-transform: translateY(0px) rotateZ(45deg);
+        -ms-transform: translateY(0px) rotateZ(45deg);
+        -o-transform: translateY(0px) rotateZ(45deg);
+        transform: translateY(0px) rotateZ(45deg);
+    }
+
+    input[type="checkbox"]:checked ~ label .bottom {
+        -webkit-transform: translateY(-15px) rotateZ(-45deg);
+        -moz-transform: translateY(-15px) rotateZ(-45deg);
+        -ms-transform: translateY(-15px) rotateZ(-45deg);
+        -o-transform: translateY(-15px) rotateZ(-45deg);
+        transform: translateY(-15px) rotateZ(-45deg);
+    }
+
+    input[type="checkbox"]:checked ~ label .middle {
+        width: 0;
+    }
+
+    .middle {
+        margin: 0 auto;
+    }
+
+    label {
+        top: 10px;
+        display: inline-block;
+        padding: 7px 10px;
+        background-color: transparent;
+        cursor: pointer;
+        margin: 10px;
+        z-index: 3;
+        position: fixed;
+    }
+
+    .bar {
+        display: block;
+        background-color: #38618c;
+        width: 30px;
+        height: 3px;
+        border-radius: 5px;
+        margin: 5px auto;
+        transition: background-color 0.4s ease-in, transform 0.4s ease-in, width 0.4s ease-in;
+    }
+
+    h1 {
+        margin: 0;
+        position: relative;
+        top: 45%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%);
+        text-align: center;
+        font-size: 50px;
+    }
+
+    h1 span {
+        font-size: 20px;
+        display: block;
+    }
+
+    p {
+        font-size: 30px;
+    }
+
+    .button {
+        display: inline-block;
+        background-image: none;
+        border: none;
+        background-color: transparent;
+        padding-bottom: 7px;
+        position: relative;
+        cursor: pointer;
+        font-size: 20px;
+        color: white;
+        padding: 7px 50px;
+        border: 2px solid white;
+    }
+
+    @media (min-width: 992px) {
+        h1 {
+            font-size: 40px;
+        }
+        .aside-left {
+            display: block;
+        }
+
+        .aside-right {
+            width: 60%;
+        }
+    }
+
+    :root,
+    [data-color-mode="light"] {
+        --color-text-primary: #24292e;
+        --color-bg-canvas: #fff;
+        --color-scale-gray-3: #d1d5da;
+        --color-scale-purple-8: #3a1d6e;
+        --color-scale-white: #fff;
+        --color-scale-purple-9: #29134e;
+        --color-scale-gray-8: #2f363d;
+        --color-scale-purple-6: #5a32a3;
+        --color-scale-yellow-4: #ffdf5d;
+        --color-scale-yellow-0: #fffdef;
+        --color-auto-gray-3: #d1d5da;
+        --color-scale-red-5: #d73a49;
+        --color-scale-orange-3: #ffab70;
+        --color-scale-purple-5: #6f42c1;
+        --color-scale-green-3: #85e89d;
+        --color-scale-blue-4: #2188ff;
+        --color-scale-gray-6: #586069;
+    }
+
+    [data-color-mode] {
+        color: var(--color-text-primary);
+        background-color: var(--color-bg-canvas);
+    }
+
+    /* style end */
+
+    [data-color-mode="light"] {
+        --color-profile-color-modes-toggle-track-border: var(--color-scale-purple-8);
+    }
+
+    [data-color-mode="light"] {
+        --color-profile-color-modes-toggle-track-bg: var(--color-scale-purple-9);
+    }
+
+    [data-color-mode="light"] {
+        --color-profile-color-modes-toggle-thumb-bg: var(--color-scale-purple-6);
+    }
+
+    [data-color-mode="light"] {
+        --color-profile-color-modes-toggle-moon: var(--color-scale-yellow-0);
+    }
+
+/* color */
+    .profile-color-modes {
+        display: block;
+        position: relative;
+        padding-right: 32px;
+    }
+
+    .profile-color-modes-toggle {
+        position: absolute;
+        top: 12px;
+        right: 0;
+    }
+
+    .profile-color-modes-toggle-track {
+        width: 42px;
+        height: 24px;
+        border-radius: 24px;
+        border: 3px solid var(--color-profile-color-modes-toggle-track-border);
+        background-color: var(--color-profile-color-modes-toggle-track-bg);
+    }
+
+    .profile-color-modes-toggle-thumb {
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background-color: var(--color-profile-color-modes-toggle-thumb-bg);
+        transition: transform 0.3s cubic-bezier(0.4, 0.03, 0, 1);
+        cursor: pointer;
+    }
+
+    [data-color-mode="light"] .profile-color-modes-toggle-thumb {
+        transform: translateX(18px);
+    }
+
+    .profile-color-modes-popover {
+        opacity: 0.01;
+        transition: opacity 0.5s cubic-bezier(0.4, 0.03, 0, 1);
+    }
+
+    .profile-color-modes-popover.shown {
+        opacity: 1;
+    }
+
+    .profile-color-modes-illu-group {
+        stroke: var(--color-auto-gray-3);
+    }
+
+    .profile-color-modes-illu-frame {
+        opacity: 0;
+    }
+
+    @keyframes profile-light-color-modes-illu-anim-frame-show {
+        0% {
+            opacity: 0;
+            animation-timing-function: ease-out;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes profile-light-color-modes-illu-anim-frame-hide {
+        0% {
+            opacity: 1;
+            animation-timing-function: ease-in;
+        }
+
+        to {
+            opacity: 0;
+        }
+    }
+
+    [data-color-mode="light"] .profile-color-modes-illu-red {
+        stroke: var(--color-scale-red-5);
+    }
+
+    [data-color-mode="light"] .profile-color-modes-illu-orange {
+        stroke: var(--color-scale-orange-3);
+    }
+
+    [data-color-mode="light"] .profile-color-modes-illu-purple {
+        stroke: var(--color-scale-purple-5);
+    }
+
+    [data-color-mode="light"] .profile-color-modes-illu-green {
+        stroke: var(--color-scale-green-3);
+    }
+
+    [data-color-mode="light"] .profile-color-modes-illu-blue {
+        stroke: var(--color-scale-blue-4);
+    }
+
+    [data-color-mode="light"] .profile-color-modes-illu-group {
+        animation: profile-color-modes-illu-anim 0.2s
+            cubic-bezier(0.72, 0.08, 1, 0.68) backwards;
+    }
+
+    @keyframes profile-color-modes-illu-anim {
+        0% {
+            stroke: var(--color-scale-gray-6);
+        }
+    }
+
+    [data-color-mode="light"] .profile-color-modes-illu-frame {
+        animation: profile-color-modes-illu-anim-frame-show 0s forwards,
+            profile-color-modes-illu-anim-frame-hide 0s forwards;
+    }
+
+    [data-color-mode="light"] .profile-color-modes-illu-frame:first-child {
+        opacity: 1;
+        animation: profile-color-modes-illu-anim-frame-hide 0s forwards;
+    }
+
+    [data-color-mode="light"] .profile-color-modes-illu-frame:nth-child(8) {
+        animation: profile-color-modes-illu-anim-frame-show 0s forwards;
+    }
+
+    @keyframes profile-color-modes-illu-anim-frame-show {
+        0% {
+            opacity: 0;
+            animation-timing-function: ease-out;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes profile-color-modes-illu-anim-frame-hide {
+        0% {
+            opacity: 1;
+            animation-timing-function: ease-in;
+        }
+
+        to {
+            opacity: 0;
+        }
+    }
+
+    [data-color-mode="light"] .profile-color-modes-illu-red {
+        animation-delay: 0.4s;
+        animation-duration: 0.1s;
+    }
+
+    [data-color-mode="light"] .profile-color-modes-illu-orange {
+        animation-delay: 0.5s;
+        animation-duration: 0.1s;
+    }
+
+    [data-color-mode="light"] .profile-color-modes-illu-purple {
+        animation-delay: 0.6s;
+        animation-duration: 0.1s;
+    }
+
+    [data-color-mode="light"] .profile-color-modes-illu-blue {
+        animation-delay: 0.7s;
+        animation-duration: 0.1s;
+    }
+
+    [data-color-mode="light"] .profile-color-modes-illu-green {
+        animation-delay: 0.8s;
+        animation-duration: 0.2s;
+        animation-timing-function: cubic-bezier(0.47, 2.92, 0.84, -1.5);
+    }
+
+    [data-color-mode="light"] .profile-color-modes-illu-frame:first-child {
+        animation-delay: 1.8s;
+    }
+
+    [data-color-mode="light"] .profile-color-modes-illu-frame:nth-child(2) {
+        animation-delay: 1.8s, 2.58s;
+    }
+
+    [data-color-mode="light"] .profile-color-modes-illu-frame:nth-child(3) {
+        animation-delay: 2.58s, 2.66s;
+    }
+
+    [data-color-mode="light"] .profile-color-modes-illu-frame:nth-child(4) {
+        animation-delay: 2.66s, 2.78s;
+    }
+
+    [data-color-mode="light"] .profile-color-modes-illu-frame:nth-child(5) {
+        animation-delay: 2.78s, 2.84s;
+    }
+
+    [data-color-mode="light"] .profile-color-modes-illu-frame:nth-child(6) {
+        animation-delay: 2.84s, 3.44s;
+    }
+
+    [data-color-mode="light"] .profile-color-modes-illu-frame:nth-child(7) {
+        animation-delay: 3.44s, 3.56s;
+    }
+
+    [data-color-mode="light"] .profile-color-modes-illu-frame:nth-child(8) {
+        animation-delay: 3.56s;
+    }
+
+    [data-color-mode="light"] .profile-color-modes-illu-frame:nth-child(9),
+    [data-color-mode="light"] .profile-color-modes-illu-frame:nth-child(10) {
+        animation: none;
+    }
+
+  #div1{
+          /*margin-top: 100px;*/
+          position:absolute;
+          top:50%;
+          left:50%;
+          margin-left: -150px;
+          margin-top: -80px;
+
+          font-size: 50px;
+          font-weight: 800;
+          /*text-align: center;*/
+      }
+  #h{
+    display: none;
+    position:absolute;
+          top:50%;
+          left:50%;
+          margin-left: -150px;
+          margin-top: -80px;
+
+          font-size: 50px;
+          font-weight: 800;
+          text-align: center;
+  }
+
+  #div2{
+    display: none;
+  }
+
+</style>
+{% load static %}
+<main id="main1">
+  <head>
+    <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link href="{% static 'test2.css' %}" rel="stylesheet" type="text/css" />
+  </head>
+  <div id = div1 class="animated fadeInLeft">
+    Simple Cipher
+  </div>
+
+  <div id="div2" class="profile-color-modes js-promo-color-modes-banner-profile" style="width:100px;float:right;margin-top:45%;" data-color-mode="light">
+    <svg aria-hidden="true" height="45" viewBox="0 0 106 60" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+      <g class="profile-color-modes-illu-group profile-color-modes-illu-red">
+        <path d="M37.5 58.5V57.5C37.5 49.768 43.768 43.5 51.5 43.5V43.5C59.232 43.5 65.5 49.768 65.5 57.5V58.5"></path>
+      </g>
+      <g class="profile-color-modes-illu-group profile-color-modes-illu-orange">
+        <path d="M104.07 58.5C103.401 55.092 97.7635 54.3869 95.5375 57.489C97.4039 54.6411 99.7685 48.8845 94.6889 46.6592C89.4817 44.378 86.1428 50.1604 85.3786 54.1158C85.9519 50.4768 83.7226 43.294 78.219 44.6737C72.7154 46.0534 72.7793 51.3754 74.4992 55.489C74.169 54.7601 72.4917 53.3567 70.5 52.8196"></path>
+      </g>
+      <g class="profile-color-modes-illu-group profile-color-modes-illu-purple">
+        <path d="M5.51109 58.5V52.5C5.51109 41.4543 14.4654 32.5 25.5111 32.5C31.4845 32.5 36.8464 35.1188 40.5111 39.2709C40.7212 39.5089 40.9258 39.7521 41.1245 40"></path>
+        <path d="M27.511 49.5C29.6777 49.5 28.911 49.5 32.511 49.5"></path>
+        <path d="M27.511 56.5C29.6776 56.5 26.911 56.5 30.511 56.5"></path>
+      </g>
+      <g class="profile-color-modes-illu-group profile-color-modes-illu-green">
+        <circle cx="5.5" cy="12.5" r="4"></circle>
+        <circle cx="18.5" cy="5.5" r="4"></circle>
+        <path d="M18.5 9.5L18.5 27.5"></path>
+        <path d="M18.5 23.5C6 23.5 5.5 23.6064 5.5 16.5"></path>
+      </g>
+      <g class="profile-color-modes-illu-group profile-color-modes-illu-blue">
+        <g class="profile-color-modes-illu-frame">
+          <path d="M40.6983 31.5C40.5387 29.6246 40.6456 28.0199 41.1762 27.2317C42.9939 24.5312 49.7417 26.6027 52.5428 30.2409C54.2551 29.8552 56.0796 29.6619 57.9731 29.6619C59.8169 29.6619 61.5953 29.8452 63.2682 30.211C66.0833 26.5913 72.799 24.5386 74.6117 27.2317C75.6839 28.8246 75.0259 33.7525 73.9345 37.5094C74.2013 37.9848 74.4422 38.4817 74.6555 39"></path>
+        </g>
+        <g class="profile-color-modes-illu-frame">
+          <path d="M41.508 31.5C41.6336 31.2259 41.7672 30.9582 41.9085 30.6968C40.7845 26.9182 40.086 21.8512 41.1762 20.2317C42.9939 17.5312 49.7417 19.6027 52.5428 23.2409C54.2551 22.8552 56.0796 22.6619 57.9731 22.6619C59.8169 22.6619 61.5953 22.8452 63.2682 23.211C66.0833 19.5913 72.799 17.5386 74.6117 20.2317C75.6839 21.8246 75.0259 26.7525 73.9345 30.5094C75.1352 32.6488 75.811 35.2229 75.811 38.2283C75.811 38.49 75.8058 38.7472 75.7957 39"></path>
+          <path d="M49.4996 33V35.6757"></path>
+          <path d="M67.3375 33V35.6757"></path>
+        </g>
+        <g class="profile-color-modes-illu-frame">
+          <path d="M41.508 31.5C41.6336 31.2259 41.7672 30.9582 41.9085 30.6968C40.7845 26.9182 40.086 21.8512 41.1762 20.2317C42.9939 17.5312 49.7417 19.6027 52.5428 23.2409C54.2551 22.8552 56.0796 22.6619 57.9731 22.6619C59.8169 22.6619 61.5953 22.8452 63.2682 23.211C66.0833 19.5913 72.799 17.5386 74.6117 20.2317C75.6839 21.8246 75.0259 26.7525 73.9345 30.5094C75.1352 32.6488 75.811 35.2229 75.811 38.2283C75.811 38.49 75.8058 38.7472 75.7957 39"></path>
+        </g>
+        <g class="profile-color-modes-illu-frame">
+          <path d="M41.508 31.5C41.6336 31.2259 41.7672 30.9582 41.9085 30.6968C40.7845 26.9182 40.086 21.8512 41.1762 20.2317C42.9939 17.5312 49.7417 19.6027 52.5428 23.2409C54.2551 22.8552 56.0796 22.6619 57.9731 22.6619C59.8169 22.6619 61.5953 22.8452 63.2682 23.211C66.0833 19.5913 72.799 17.5386 74.6117 20.2317C75.6839 21.8246 75.0259 26.7525 73.9345 30.5094C75.1352 32.6488 75.811 35.2229 75.811 38.2283C75.811 38.49 75.8058 38.7472 75.7957 39"></path>
+          <path d="M49.4996 33V35.6757"></path>
+          <path d="M67.3375 33V35.6757"></path>
+        </g>
+        <g class="profile-color-modes-illu-frame">
+          <path d="M41.508 31.5C41.6336 31.2259 41.7672 30.9582 41.9085 30.6968C40.7845 26.9182 40.086 21.8512 41.1762 20.2317C42.9939 17.5312 49.7417 19.6027 52.5428 23.2409C54.2551 22.8552 56.0796 22.6619 57.9731 22.6619C59.8169 22.6619 61.5953 22.8452 63.2682 23.211C66.0833 19.5913 72.799 17.5386 74.6117 20.2317C75.6839 21.8246 75.0259 26.7525 73.9345 30.5094C75.1352 32.6488 75.811 35.2229 75.811 38.2283C75.811 38.49 75.8058 38.7472 75.7957 39"></path>
+        </g>
+        <g class="profile-color-modes-illu-frame">
+          <path d="M41.508 31.5C41.6336 31.2259 41.7672 30.9582 41.9085 30.6968C40.7845 26.9182 40.086 21.8512 41.1762 20.2317C42.9939 17.5312 49.7417 19.6027 52.5428 23.2409C54.2551 22.8552 56.0796 22.6619 57.9731 22.6619C59.8169 22.6619 61.5953 22.8452 63.2682 23.211C66.0833 19.5913 72.799 17.5386 74.6117 20.2317C75.6839 21.8246 75.0259 26.7525 73.9345 30.5094C75.1352 32.6488 75.811 35.2229 75.811 38.2283C75.811 38.49 75.8058 38.7472 75.7957 39"></path>
+          <path d="M49.4996 33V35.6757"></path>
+          <path d="M67.3375 33V35.6757"></path>
+        </g>
+        <g class="profile-color-modes-illu-frame">
+          <path d="M73.4999 40.2236C74.9709 38.2049 75.8108 35.5791 75.8108 32.2283C75.8108 29.2229 75.1351 26.6488 73.9344 24.5094C75.0258 20.7525 75.6838 15.8246 74.6116 14.2317C72.7989 11.5386 66.0832 13.5913 63.2681 17.211C61.5952 16.8452 59.8167 16.6619 57.973 16.6619C56.0795 16.6619 54.2549 16.8552 52.5427 17.2409C49.7416 13.6027 42.9938 11.5312 41.176 14.2317C40.0859 15.8512 40.7843 20.9182 41.9084 24.6968C41.003 26.3716 40.4146 28.3065 40.2129 30.5"></path>
+          <path d="M82.9458 30.5471L76.8413 31.657"></path>
+          <path d="M76.2867 34.4319L81.8362 37.7616"></path>
+          <path d="M49.4995 27.8242V30.4999"></path>
+          <path d="M67.3374 27.8242V30.4998"></path>
+        </g>
+        <g class="profile-color-modes-illu-frame">
+          <path d="M45.3697 34.2658C41.8877 32.1376 39.7113 28.6222 39.7113 23.2283C39.7113 20.3101 40.3483 17.7986 41.4845 15.6968C40.3605 11.9182 39.662 6.85125 40.7522 5.23168C42.5699 2.53117 49.3177 4.6027 52.1188 8.24095C53.831 7.85521 55.6556 7.66186 57.5491 7.66186C59.3929 7.66186 61.1713 7.84519 62.8442 8.21095C65.6593 4.59134 72.375 2.5386 74.1877 5.23168C75.2599 6.82461 74.6019 11.7525 73.5105 15.5094C74.7112 17.6488 75.3869 20.2229 75.3869 23.2283C75.3869 28.6222 73.2105 32.1376 69.7285 34.2658C70.8603 35.5363 72.6057 38.3556 73.3076 40"></path>
+          <path d="M49.0747 19.8242V22.4999"></path>
+          <path d="M54.0991 28C54.6651 29.0893 55.7863 30.0812 57.9929 30.0812C59.0642 30.0812 59.8797 29.8461 60.5 29.4788"></path>
+          <path d="M66.9126 19.8242V22.4999"></path>
+          <path d="M33.2533 20.0237L39.0723 22.1767"></path>
+          <path d="M39.1369 25.0058L33.0935 27.3212"></path>
+          <path d="M81.8442 19.022L76.0252 21.1751"></path>
+          <path d="M75.961 24.0041L82.0045 26.3196"></path>
+        </g>
+        <g class="profile-color-modes-illu-frame">
+          <path d="M73.4999 40.2236C74.9709 38.2049 75.8108 35.5791 75.8108 32.2283C75.8108 29.2229 75.1351 26.6488 73.9344 24.5094C75.0258 20.7525 75.6838 15.8246 74.6116 14.2317C72.7989 11.5386 66.0832 13.5913 63.2681 17.211C61.5952 16.8452 59.8167 16.6619 57.973 16.6619C56.0795 16.6619 54.2549 16.8552 52.5427 17.2409C49.7416 13.6027 42.9938 11.5312 41.176 14.2317C40.0859 15.8512 40.7843 20.9182 41.9084 24.6968C41.003 26.3716 40.4146 28.3065 40.2129 30.5"></path>
+          <path d="M82.9458 30.5471L76.8413 31.657"></path>
+          <path d="M76.2867 34.4319L81.8362 37.7616"></path>
+          <path d="M49.4995 27.8242V30.4999"></path>
+          <path d="M67.3374 27.8242V30.4998"></path>
+        </g>
+        <g class="profile-color-modes-illu-frame">
+          <path d="M40.6983 31.5C40.5387 29.6246 40.6456 28.0199 41.1762 27.2317C42.9939 24.5312 49.7417 26.6027 52.5428 30.2409C54.2551 29.8552 56.0796 29.6619 57.9731 29.6619C59.8169 29.6619 61.5953 29.8452 63.2682 30.211C66.0833 26.5913 72.799 24.5386 74.6117 27.2317C75.6839 28.8246 75.0259 33.7525 73.9345 37.5094C74.2013 37.9848 74.4422 38.4817 74.6555 39"></path>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <div id="h">
+    Simple Cipher
+    <p> with KMU ISMC 19 </p>
+  </div>
+  <input type="checkbox" id="myInput">
+  <label for="myInput">
+      <span class="bar top"></span>
+      <span class="bar middle"></span>
+      <span class="bar bottom"></span>
+  </label>
+  <aside>
+    <div class="aside-section aside-left">
+      <div class="aside-content">
+        <p> Some content</p>
+      </div>
+    </div>
+    <div class="aside-section aside-right">
+      <ul class="aside-list">
+        <li><a class="aside-anchor" id="a1" href="{% url 'vigenere_input' %}">Vigenere Cipher</a></li>
+        <li><a class="aside-anchor" id="a2" href="{% url 'caesar' %}">Caesar Cipher</a></li>
+        <li><a class="aside-anchor" id="a3" href="{% url 'subst_input' %}">Subst Cipher</a></li>
+      </ul>
+    </div>
+  </aside>
+</main>
