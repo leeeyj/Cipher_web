@@ -24,5 +24,6 @@ urlpatterns = [
     path('vigenere/', hello.views.vigenere_encrypt, name='vigenere'),
     path('caesar/', hello.views.caesar, name='caesar'),
     path('subst_input/', hello.views.subst_input, name='subst_input'),
-    path('subst/', hello.views.subst_encrypt, name='subst'),
+    path('subst_cioutput/', hello.views.subst_encrypt, name='subst_cioutput'),
+    path('subst_ploutput/', hello.views.subst_decrypt, name='subst_ploutput'),
 ]

@@ -18,7 +18,7 @@
 
 <!doctype html>
 <h1>
-    Subst Cipher
+    복호문 결과
 </h1>
 <html lang="ko">
   <head>
@@ -28,20 +28,6 @@
     <title>Subst Cipher</title>
 </head>
   <body>
-    <script> 
-        function submit2(frm) { 
-          frm.action="{% url 'subst_ploutput' %}"; 
-          frm.submit(); 
-          return true; 
-        } 
-      </script> 
-    <form action="{% url 'subst_cioutput' %}" method="GET">
-        <label for="msg">Text: </label><br>
-        <textarea name="msg" id="" cols="30" rows="10"></textarea><br>
-        <!-- <button type="submit">encypt</button> -->
-        <input type="submit" value="encypt">
-        <!-- <button type="submit">decrypt</button> -->
-        <input type="button" value="decrypt" onclick="return submit2(this.form);">>
-    </form>
+    {{ plaintext }}
   </body>
 </html>
