@@ -50,4 +50,23 @@ def subst_encrypt(request):
                 result += OutSet[idx].lower()
         else:
             result += ch
-    return render(request, 'subst.html', {'plaintext':msg, 'ciphertext':result})
+    return render(request, 'subst_cioutput.html', {'plaintext':msg, 'ciphertext':result})
+
+def subst_decrypt(request):
+    Alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    key = 'VWXABCDEIJKFGHLMQRSNOPTUYZ'
+    result = ''
+    InSet = key
+    OutSet = Alphabet
+    msg = request.GET['msg']
+
+    for ch in msg:
+        if ch.upper() in InSet:
+            idx = InSet.find(ch.upper())
+            if ch in Alphabet:
+                result += OutSet[idx].upper()
+            else:
+                result += OutSet[idx].lower()
+        else:
+            result += ch
+    return render(request, 'subst_ploutput.html', {'ciphertext':msg, 'plaintext':result})
